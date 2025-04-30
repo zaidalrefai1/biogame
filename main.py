@@ -86,13 +86,13 @@ class DNAIslandGame:
         self.scene = "dna_lab"
         self.canvas.create_image(0,0,anchor="nw",image=self.lab_bg)
         tk.Button(self.root, text="Exit to Hub", bg=BASE_COLOR, fg=TEXT_COLOR,
-                  width=4, height=2, relief="raised", command=self.show_hub).place(x=700, y=500)
+                  width=4, height=2, relief="raised", command=self.show_hub).place(x=700, y=530)
         self.level_label = tk.Label(self.root, text=f"Level: {self.level}",
                                     bg=BASE_COLOR, fg=TEXT_COLOR, width=8, height=2, relief="ridge")
-        self.level_label.place(x=600, y=30)
+        self.level_label.place(x=600, y=120)
         self.timer_label = tk.Label(self.root, text="Time: 0s",
                                     bg=BASE_COLOR, fg=TEXT_COLOR, width=8, height=2, relief="ridge")
-        self.timer_label.place(x=600, y=80)
+        self.timer_label.place(x=500, y=120)
         self.setup_lab()
 
     def setup_lab(self):
@@ -102,7 +102,7 @@ class DNAIslandGame:
 
         self.empty_spots = []
         for i, base in enumerate(random.choices(list(DNA_PAIRS.keys()), k=base_count)):
-            tk.Label(self.root, text=base, bg="lightblue", width=4, height=2, relief="ridge").place(x=x0 + i * spacing, y=y0)
+            tk.Label(self.root, text=base, bg="lightblue", width=4, height=2, relief="ridge").place(x=x0 + i * spacing, y=200)
             slot = tk.Label(self.root, text="", bg="white", width=4, height=2, relief="ridge")
             slot.place(x=x0 + i * spacing, y=y0 + 100)
             self.empty_spots.append((slot, base))
@@ -119,7 +119,7 @@ class DNAIslandGame:
             self.pal_btns[b] = btn
 
         tk.Button(self.root, text="Submit", bg=BASE_COLOR, fg=TEXT_COLOR,
-                  width=4, height=2, relief="raised", command=self.on_submit).place(x=650, y=pal_y)
+                  width=4, height=2, relief="raised", command=self.on_submit).place(x=600, y=pal_y)
 
         self.start_timer()
 
